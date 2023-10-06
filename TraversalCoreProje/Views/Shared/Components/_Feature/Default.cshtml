@@ -1,0 +1,44 @@
+﻿@using EntityLayer.Concrete
+@model List<Feature>
+
+<div class="best-rooms py-5">
+    <div class="container py-md-5">
+        <div class="ban-content-inf row">
+            <div class="maghny-gd-1 col-lg-6">
+                <div class="maghny-grid">
+                    <figure class="effect-lily border-radius  m-0">
+                        <img class="img-fluid" src="@Model.FirstOrDefault().Image" alt="" />
+                        <figcaption>
+                            <div>
+                                <h4>@Model.FirstOrDefault().Title</h4>
+                                <p>@Model.FirstOrDefault().Description</p>
+                            </div>
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+
+            <div class="maghny-gd-1 col-lg-6 mt-lg-0 mt-4">
+                <div class="row">
+                    @for (var i = 1; i <= 4; i++)
+                    {
+                        <div class="maghny-gd-1 col-6">
+                            <div class="maghny-grid">
+                                <figure class="effect-lily border-radius">
+                                    <img class="img-fluid" src="@Model[i].Image" alt="" />
+                                    <figcaption>
+                                        <div>
+                                            <h4>@Model[i].Title</h4>
+                                            <p>@Model[i].Description </p>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
