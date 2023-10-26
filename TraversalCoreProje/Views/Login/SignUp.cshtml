@@ -82,6 +82,7 @@
 							<input type="password" asp-for="Password" />
 							<span asp-validation-for="Password" class="text-danger"></span>
 						</div>
+						<div style="color:#ff0000" asp-validation-summary="ModelOnly"></div>
 						<div class="form-input">
 							<label>Şifre Tekrar</label>
 							<input type="password" asp-for="ConfirmPassword"/>
