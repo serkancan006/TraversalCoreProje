@@ -1,10 +1,12 @@
 ﻿using iTextSharp.text;
 using iTextSharp.text.pdf;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.IO;
 
 namespace TraversalCoreProje.Controllers
 {
+    [AllowAnonymous]
     public class PdfReportController : Controller
     {
         public IActionResult Index()
@@ -26,7 +28,7 @@ namespace TraversalCoreProje.Controllers
             document.Add(paragraph);
             document.Close();
 
-            return File("/pdfreprots/dosya1.pdf", "application/pdf", "dosya1.pdf");
+            return File("/pdfreports/dosya1.pdf", "application/pdf", "dosya1.pdf");
         }
 
         public IActionResult StaticCustomerReport()
@@ -60,7 +62,7 @@ namespace TraversalCoreProje.Controllers
 
             document.Close();
 
-            return File("/pdfreprots/dosya2.pdf", "application/pdf", "dosya2.pdf");
+            return File("/pdfreports/dosya2.pdf", "application/pdf", "dosya2.pdf");
         }
     }
 }
