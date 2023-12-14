@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+@* önce sonra kütüphane tanımlamalarına dikakt Layout da sonda tanımlandıgı için jquery dosyasını burada görmüyor kendi dosyalarının bagımlılıklarında görüyordur belki. *@
+@* cshtml de javascript intellisence görmeme durumunu düzeltme visual studio 2022 *@
+<script src="~/lib/jquery/jquery.min.js"></script>
+
+
+<h2>Şehir Ülke İşlemleri</h2>
+<br />
+
+<button type="button" id="btngetlist" class="btn btn-outline-info">Şehir Listesi</button>
+<button type="button" id="btngetbyid" class="btn btn-outline-primary">Şehir Getir</button>
+<button type="button" id="btnaddcity" class="btn btn-outline-warning">Şehir Ekle</button>
+<button type="button" id="btndeletecity" class="btn btn-outline-danger">Şehir Sil</button>
+<button type="button" id="btnupdatecity" class="btn btn-outline-success">Şehir Güncelle</button>
+
+<br />
+<br />
+
+<div id="citylist">
+    Buraya şehir listesi gelecek
+</div>
+
+
+<script>
+    $("#btngetlist").click(function () {
+        $.ajax({
+            contentType: "application/json",
+            dataType: "json",
+            type: "Get",
+            url: "/Admin/City/CityList/",
+            success: function (func) {
+                let w = jQuery.parseJSON(func);
+                console.log(w);
+                let tablehtml = "<table class=table table-bordered> <tr><th> Şehir Adı </th> <th> Gün-Gece </th> <th> Fiyatı </th> </tr>";
+                $.each(w, (index, value) => {
+                    tablehtml += `<tr><td>${value.CityID}</td> <td>${value.CityName}</td> <td> ${value.CityCountry}</td> </tr>`
+                });
+                tablehtml += "</table>";
+                $("#citylist").html(tablehtml);
+            }
+        });
+    });
+</script>
