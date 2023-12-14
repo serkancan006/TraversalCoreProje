@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Abstract;
 using BusinessLayer.ValidationRules;
+using DataAccessLayer.Concrete;
 using EntityLayer.Concrete;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
@@ -8,6 +9,7 @@ using System;
 namespace TraversalCoreProje.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Route("Admin/[controller]/[action]/{id?}")]
     public class GuideController : Controller
     {
         private readonly IGuideService _guideService;
@@ -58,9 +60,18 @@ namespace TraversalCoreProje.Areas.Admin.Controllers
             _guideService.TUpdate(guide);
             return RedirectToAction("Index");
         }
-        public IActionResult ChangeToTrue(int id)
+
+        public IActionResult ChangeGuideStat(int id)
         {
+            Context c = new Context();
+            var guide = c.Guides.Find(id);
+
+            guide.Status = guide.Status ? false : true;
+
+            c.SaveChanges();
             return RedirectToAction("Index");
         }
+
+
     }
 }

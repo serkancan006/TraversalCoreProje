@@ -33,11 +33,11 @@
             <td>@item.Name</td>
             <td>@item.Description</td>
             <td>
-                <a href="#" class="btn btn-outline-@(item.Status ? "warning" : "info")">
+                <a href="/Admin/Guide/ChangeGuideStat/@item.GuideID" class="btn btn-outline-@(item.Status ? "warning" : "info")">
                     @(item.Status ? "Pasif Yap" : "Aktif Yap")
                 </a>
             </td>
-            <td><a href="#" class="btn btn-outline-success">Düzenle</a></td>
+            <td><a href="/Admin/Guide/EditGuide/" class="btn btn-outline-success">Düzenle</a></td>
             </tr>
     }
 </table>
