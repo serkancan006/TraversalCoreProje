@@ -1,4 +1,5 @@
-﻿using EntityLayer.Concrete;
+﻿using DTOLayer.DTOs.AnnouncementDTOs;
+using EntityLayer.Concrete;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.ValidationRules
 {
-    public class AnnouncementValidator : AbstractValidator<Announcement>
+    public class AnnouncementValidator : AbstractValidator<AnnouncementAddDTO>
     {
         public AnnouncementValidator()
         {
