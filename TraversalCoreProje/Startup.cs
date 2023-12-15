@@ -55,7 +55,8 @@ namespace TraversalCoreProje
             services.ContainerDependencies();
 
             services.AddAutoMapper(typeof(Startup));
-            services.AddTransient<IValidator<AnnouncementAddDTO>, AnnouncementValidator>();
+
+            services.CustomerValidator();
 
             services.AddControllersWithViews().AddFluentValidation();
             //Proje seviyesinde Authonticate iþlemleri için
