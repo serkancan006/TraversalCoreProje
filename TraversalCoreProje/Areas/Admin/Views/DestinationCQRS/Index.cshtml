@@ -1,0 +1,33 @@
+﻿@model List<TraversalCoreProje.CQRS.Results.DestinationResults.GetAllDestinationQueryResult>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>CQRS Tur verileri</h2>
+<br />
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Şehir</th>
+        <th>Günce - Gece</th>
+        <th>Fiyat</th>
+        <th>Kapasite</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+    @foreach (var item in Model)
+	{
+		 <tr>
+             <td>@item.id</td>
+             <td>@item.city</td>
+             <td>@item.daynight</td>
+             <td>@item.price</td>
+             <td>@item.capacity</td>
+             <td><a href="/Admin/DestinationCQRS/DeleteDestination/@item.id" class="btn btn-outline-danger">Sil</a></td>
+             <td><a href="/Admin/DestinationCQRS/GetDestination/@item.id" class="btn btn-outline-success">Güncelle</a></td>
+         </tr>
+	}
+</table>
+<a href="/Admin/DestinationCQRS/AddDestination/" class="btn btn-outline-primary">Yeni Tur Rota Girişi</a>
