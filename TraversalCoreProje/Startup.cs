@@ -9,6 +9,7 @@ using DTOLayer.DTOs.AnnouncementDTOs;
 using EntityLayer.Concrete;
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -46,6 +47,14 @@ namespace TraversalCoreProje
             services.AddScoped<CreateDestinationCommandHandler>();
             services.AddScoped<RemoveDestinationCommandHandler>();
             services.AddScoped<UpdateDestinationCommandHandler>();
+
+            //typeof bir JavaScript operatörüdür. Bu operatör, belirli bir deðerin veri türünü döndürmek için kullanýlýr. JavaScript'te typeof operatörü genellikle deðiþkenlerin veya deðerlerin veri türünü kontrol etmek veya karþýlaþtýrmak için kullanýlýr.
+            //typeof operatörü, bir argüman olarak alýnan deðerin veri türünü bir dize olarak döndürür.
+
+            //Hocam tahminim bizzden assambly bir kod isityor her ne kadar programlama dilleri deðiþkenlik göstersede arka planda hepsi assamble koduna dönüþtürülüp( 0 ve 1 lere yani ) bize response olarak tekrar 0 ve 1 den bildiðimiz þekle döndürür. startup ise ilgili tüm configure'leri vs vs program cs ile asssambly koduna dönüþtürüldüðü yerdir bu yüzden parametre olarak startup verdik :)
+
+            //typeof(startup) dediðimiz kýsýmda startup dosyasýyla ayný namespacede olan dosyalar için verdiðimiz dependency injection çalýþsýn demek istiyoruz. .Net6 için typeof(Program) diyoruz.
+            services.AddMediatR(typeof(Startup));
 
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
 
