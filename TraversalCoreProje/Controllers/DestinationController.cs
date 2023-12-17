@@ -1,10 +1,12 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace TraversalCoreProje.Controllers
 {
+    [AllowAnonymous]
     public class DestinationController : Controller
     {
         DestinationManager destinationManager = new DestinationManager(new EfDestinationDal());
@@ -17,7 +19,7 @@ namespace TraversalCoreProje.Controllers
         public IActionResult DestinationDetails(int id)
         {
             ViewBag.i = id;
-            var values = destinationManager.TGetByID(id);
+            var values = destinationManager.TGetDestinationWithGuide(id);
             return View(values);
         }
         [HttpPost]
