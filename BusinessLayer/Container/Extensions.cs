@@ -7,6 +7,7 @@ using DataAccessLayer.Abstract;
 using DataAccessLayer.EntityFramework;
 using DataAccessLayer.UnitOfWork;
 using DTOLayer.DTOs.AnnouncementDTOs;
+using DTOLayer.DTOs.ContactDTOs;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -55,6 +56,7 @@ namespace BusinessLayer.Container
         {
             services.AddTransient<IValidator<AnnouncementAddDTO>, AnnouncementValidator>();
             services.AddTransient<IValidator<AnnouncementUpdateDto>, AnnouncementUpdateValidator>();
+            services.AddTransient<IValidator<SendMessageDto>, SendContactUsValidator>();
         }
     }
 }
