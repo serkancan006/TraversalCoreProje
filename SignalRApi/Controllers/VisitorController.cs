@@ -42,24 +42,7 @@ namespace SignalRApi.Controllers
 }
 
 
-//Postgresql
-//select * From crosstab ( 'Select "VisitDate","City","CityVisitCount" From "Visitors" Order By 1,2' ) As ct("VisitDate" TimeStamp,City1 int ,City2 int ,City3 int ,City4 int, City5 int);
-
-
-//Mssql -> tam cross table değil corss table yapısı mssql de bulunmamaktadır
-//SELECT*
-//FROM(
-//    SELECT VisitDate, City, CityVisitCount,
-//           'City' + CAST(ROW_NUMBER() OVER(PARTITION BY VisitDate ORDER BY City) AS VARCHAR(10)) AS CityNumber
-//    FROM Visitors
-//) AS SourceTable
-//PIVOT (
-//    MAX(CityVisitCount)
-//    FOR CityNumber IN ([City1], [City2], [City3], [City4], [City5])
-//) AS PivotTable
-//ORDER BY VisitDate;
-
-
-//Update "Visitors" Set "VisitDate" = '2023-03-16' where "VisitorID" > 148 and "VisitorID" <= 153
-//dogru çalışması  için her 5 veride bir DateTimeverilerinini saatlarini ortak formata sokman gerek ya ortak formata sokulur yada saatden bagımsız yapılır örnegin Date , DateTime olmaz
-
+//mssql
+//Create Procedure SignalRPivot
+//as
+//select tarih,[1],[2],[3],[4],[5] from (select [city],CityVisitCount,Cast([VisitDate] as Date) as tarih from Visitors) as visitTable Pivot (Sum(CityVisitCount) for City in([1],[2],[3],[4],[5])) as pivottable order by tarih asc
