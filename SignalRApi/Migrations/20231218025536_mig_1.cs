@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SignalRApi.Migrations
 {
-    public partial class mig_first : Migration
+    public partial class mig_1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,7 +15,7 @@ namespace SignalRApi.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     City = table.Column<int>(type: "int", nullable: false),
                     CityVisitCount = table.Column<int>(type: "int", nullable: false),
-                    VisitDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    VisitDate = table.Column<DateTime>(type: "date", nullable: false)
                 },
                 constraints: table =>
                 {

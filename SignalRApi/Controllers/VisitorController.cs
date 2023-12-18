@@ -46,7 +46,7 @@ namespace SignalRApi.Controllers
 //select * From crosstab ( 'Select "VisitDate","City","CityVisitCount" From "Visitors" Order By 1,2' ) As ct("VisitDate" TimeStamp,City1 int ,City2 int ,City3 int ,City4 int, City5 int);
 
 
-//Mssql
+//Mssql -> tam cross table değil corss table yapısı mssql de bulunmamaktadır
 //SELECT*
 //FROM(
 //    SELECT VisitDate, City, CityVisitCount,
