@@ -1,0 +1,20 @@
+﻿@model List<TraversalCoreProje.Areas.Admin.Models.RoleAssignViewModel>
+@{
+    ViewData["Title"] = "AssignRole";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Rol Atama Sayfası</h1>
+
+<form method="post">
+    @foreach (var item in Model)
+	{
+		 <div class="form-check">
+             <input type="hidden" asp-for="@item.RoleId" />
+             <input type="hidden" asp-for="@item.RoleName" />
+             <input type="checkbox" asp-for="@item.RoleExist" class="form-check-input" />
+             <label class="form-check-label" for="@item.RoleExist">@item.RoleName</label>
+         </div>
+	}
+    <button class="btn btn-outline-primary">Değişiklikleri Kaydet</button>
+</form>
