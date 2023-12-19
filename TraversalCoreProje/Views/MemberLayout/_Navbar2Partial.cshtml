@@ -14,6 +14,7 @@
                         <span class="d-sm-inline d-none">Sign In</span>
                     </a>
                 </li>
+
                 <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
                     <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
                         <div class="sidenav-toggler-inner">
@@ -23,11 +24,37 @@
                         </div>
                     </a>
                 </li>
+
                 <li class="nav-item px-3 d-flex align-items-center">
                     <a href="javascript:;" class="nav-link text-body p-0">
                         <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
                     </a>
                 </li>
+                <!-- Dil seçme -->
+                <li class="nav-item dropdown align-items-center pe-2 d-flex">
+                    <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa fa-globe cursor-pointer"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
+                        <li>
+                            @*<a class="dropdown-item" href="#" onclick="changeLanguage('tr')">Türkçe</a>*@
+                            <a class="dropdown-item" asp-route-culture="tr">Türkçe</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" asp-route-culture="en">İngilizce</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" asp-route-culture="fr">Fransızca</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" asp-route-culture="es">Spain</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" asp-route-culture="de">Almanca</a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- Dil seçme -->
                 <li class="nav-item dropdown pe-2 d-flex align-items-center">
                     <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fa fa-bell cursor-pointer"></i>
