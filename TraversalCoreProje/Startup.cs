@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -86,7 +87,12 @@ namespace TraversalCoreProje
                 config.Filters.Add(new AuthorizeFilter(policy));
             });
 
-            services.AddMvc();
+            services.AddLocalization(opt =>
+            {
+                opt.ResourcesPath = "Resources";
+            });
+
+            services.AddMvc().AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix).AddDataAnnotationsLocalization();
 
             services.ConfigureApplicationCookie(options =>
             {
@@ -115,11 +121,15 @@ namespace TraversalCoreProje
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-			// UseAuthentication kýsmýnýn UseAuthorization önce olmasý gerek. olmaz ise Sisteme üye olmadan veya giriþ yapmadan yetkilendirme iþlemi uygulayacak ve bunun sonucunda hata alacaðýz.
-			app.UseAuthentication();
+            // UseAuthentication kýsmýnýn UseAuthorization önce olmasý gerek. olmaz ise Sisteme üye olmadan veya giriþ yapmadan yetkilendirme iþlemi uygulayacak ve bunun sonucunda hata alacaðýz.
+            app.UseAuthentication();
             app.UseRouting();
 
             app.UseAuthorization();
+
+            var supportedCultures = new[] { "en", "fr", "es", "gr", "tr", "de" };
+            var localizationOptions = new RequestLocalizationOptions().SetDefaultCulture(supportedCultures[4]).AddSupportedCultures(supportedCultures).AddSupportedUICultures(supportedCultures);
+            app.UseRequestLocalization(localizationOptions);
 
             app.UseEndpoints(endpoints =>
             {
@@ -136,7 +146,7 @@ namespace TraversalCoreProje
                     pattern: "{controller=Default}/{action=Index}/{id?}");
             });
 
-           
+
         }
     }
 }
